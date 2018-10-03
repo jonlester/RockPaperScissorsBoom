@@ -18,5 +18,5 @@ services:
       "ConnectionStrings:DefaultConnection": "Server=sql-rock-paper-scissors.database.windows.net,1433;Database=db-rock-paper-scissors;User Id=jon;Password=ChangeYoPassword2;"
     ports:
         - "80:80"
-    depends_on:
-        - rockpaperscissors-sql
+    #depends_on:
+    #    - rockpaperscissors-sql
