@@ -63,7 +63,9 @@ namespace RockPaperScissorsBoom.Server.Controllers
             SaveResults(gameRunnerResult);
             var winner = gameRunnerResult.AllMatchResults.Select(x => x.MatchResults).First().First().Player1.Name;
             await PublishMessage(gameRunnerResult.GameRecord.Id.ToString(), winner);
-            return gameRunnerResult.AllMatchResults.Select(x => x.MatchResults).First().First().Player1.Name;
+            //return gameRunnerResult.AllMatchResults.Select(x => x.MatchResults).First().First().Player1.Name;
+            var bestRecord = gameRunnerResult.GameRecord.BotRecords.OrderByDescending(x => x.Wins).First();
+            return $"{bestRecord.Competitor.Name}:{bestRecord.Wins}-{bestRecord.Losses}";
         }
 
         internal async Task PublishMessage(string GameId, string Winner)
